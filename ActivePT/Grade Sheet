@@ -1,0 +1,15 @@
+Product backlog and sprint backlog are on Scrumy.com: Use at least three screens: 10 /10
+Use at least two unique layouts: 10 /10
+Use at least two simple views: 10 /10
+
+Use at least one complex or data driven views: 8 /10 (email and first/last name)
+
+Proper use of intent and bundle: 10 /10
+
+Menu is present and allows navigation among screens: 5 /10
+
+All String literals are in strings.xml. 7 /10
+Source code has proper documentation/JavaDoc. Source code follows proper Java naming conventions, and is in good form: 8 /10
+Do something extra beyond the minimum requirements stated here: 10 /10
+
+What did you do? __Feature for name and email collected as well as setting up gallery for viewing of exercise photos taken plus use advanced feature (hardware - camera): 10 / 10 __
