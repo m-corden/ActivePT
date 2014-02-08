@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+
+    <string name="app_name">ActivePT</string>
+    <string name="action_settings">Settings</string>
+    <string name="hello_world">Hello world!</string>
+    <string name="lblEnterExercise">EnterExercise</string>
+    <string name="lblPicture">Take_Picture</string>
+    <string name="lblWelcome">Welcome to ActivePT</string>
+    <string name="lblLetsStart">Let\'s Get Started!</string>
+    <string name="lblTakePicture">Take a Picture</string>
+    <string name="lblDescription">Decription of the Exercise</string>
+
+</resources>
