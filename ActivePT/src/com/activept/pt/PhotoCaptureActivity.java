@@ -8,7 +8,9 @@ import android.view.View;
 import android.widget.EditText;
 
 public class PhotoCaptureActivity extends Activity {
-	
+
+	private static final int CAMERA_RESULT = 1;
+
 	private EditText edtEnterDescription;
 	
 	// declare a variable that will hold a reference to a the EditText component on the screen.
@@ -30,8 +32,14 @@ public class PhotoCaptureActivity extends Activity {
         getMenuInflater().inflate(R.menu.photo_capture, menu);
         return true;
     }
-    
+    //this method will be invoked when Take Photo button is clicked
     public void takePicture(View v) {
+    	// use an implicit intent to invoke a camera.
+    	Intent cameraIntent = new Intent(android.provider.MediaStore.ACTION_IMAGE_CAPTURE);
+    	
+    	// start this intent and anticipate a result.
+    	startActivityForResult(cameraIntent, CAMERA_RESULT);
+    	
     	setStrEnterDescription(EnterDescription.getText().toString());
     	// create an explicit intent. Telling it to move from one screen to the next.
     	Intent takePictureIntent = new Intent(this, GalleryActivity.class);
@@ -54,4 +62,5 @@ public class PhotoCaptureActivity extends Activity {
 	public void setStrEnterDescription(String strEnterDescription) {
 		this.strEnterDescription = strEnterDescription;
 	}
+
 }

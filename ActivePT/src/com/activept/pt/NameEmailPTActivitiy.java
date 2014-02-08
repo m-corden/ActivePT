@@ -13,7 +13,7 @@ public class NameEmailPTActivitiy extends Activity {
 	private String strName;
 	
 	// declare a variable that will hold a reference to a the EditText component on the screen.
-	EditText Emaile;
+	EditText Email;
 	private String strEmail;
 	
 	@Override
@@ -27,7 +27,7 @@ public class NameEmailPTActivitiy extends Activity {
 		//get access to the enter exercise description
       	EditText edtName = (EditText) findViewById(R.id.edtName);
       	
-      //get access to the enter exercise description
+        //get access to the enter exercise description
       	EditText edtEmail = (EditText) findViewById(R.id.edtEmail);
 
 	}

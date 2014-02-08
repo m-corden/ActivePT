@@ -3,17 +3,13 @@ package com.activept.pt;
 import java.util.ArrayList;
 
 import android.app.Activity;
-import android.content.Intent;
-import android.graphics.Bitmap;
 import android.os.Bundle;
-import android.widget.ImageView;
+import android.widget.EditText;
 
 public class GalleryActivity extends Activity {
 
 	
 	private String exerciseDescription;
-	private Bitmap exerciseImage; 
-	private ImageView imgExercise;
 
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
@@ -25,12 +21,8 @@ public class GalleryActivity extends Activity {
 		
 		//associate layout with this activity
 		setContentView(R.layout.activity_gallery);
-		
-		// get a reference to the image view that will display a exercise photo.
-		imgExercise = (ImageView) findViewById((Integer) R.id.imgExercise);
-	}
 
-		//create a collection to hold the exercises
+		//create a collection to hold the plants
 		ArrayList<Exercise> allExercises = new ArrayList<Exercise>();
 		
 		exerciseDescription = null;
@@ -39,14 +31,6 @@ public class GalleryActivity extends Activity {
 		Exercise leglift = new Exercise();
 		allExercises.add(leglift);
 		
-		}
-		
-		else if (requestCode == CAMERA_RESULT) {
-		Intent data;
-		// we are here because we have received a result from the camera.
-		exerciseImage = (Bitmap) data.getExtras().get("data");
-		
-		imgExercise.setImageBitmap(exerciseImage);
 		}
 	}
 }
