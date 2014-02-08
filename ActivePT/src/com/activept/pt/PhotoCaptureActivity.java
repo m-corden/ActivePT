@@ -1,6 +1,7 @@
 package com.activept.pt;
 
 import android.app.Activity;
+import android.content.Intent;
 import android.os.Bundle;
 import android.view.Menu;
 import android.view.View;
@@ -30,9 +31,12 @@ public class PhotoCaptureActivity extends Activity {
     
     public void takePicture(View v) {
     	setStrEnterDescription(EnterDescription.getText().toString());
+    	// create an explicit intent. Telling it to move from one screen to the next.
+    	Intent takePictureIntent = new Intent(this, GalleryActivity.class);
     	
+    	//start the activity
+    	startActivity(takePictureIntent);
     }
-
 
 	public String getStrEnterDescription() {
 		return strEnterDescription;
