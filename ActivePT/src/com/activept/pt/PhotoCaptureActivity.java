@@ -21,10 +21,8 @@ public class PhotoCaptureActivity extends Activity {
         setContentView(R.layout.activity_photo_capture);
         
         //get access to the enter exercise description
-      	edtEnterDescription = (EditText) findViewById(R.id.edtEnterDescription);
-        
+      	EditText edtEnterDescription = (EditText) findViewById(R.id.edtEnterDescription);
     }
-
 
     @Override
     public boolean onCreateOptionsMenu(Menu menu) {
