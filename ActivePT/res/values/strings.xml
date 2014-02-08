@@ -10,5 +10,9 @@
     <string name="lblLetsStart">Let\'s Get Started!</string>
     <string name="lblTakePicture">Take a Picture</string>
     <string name="lblDescription">Decription of the Exercise</string>
+    <string name="lblEnterEmail">Enter Email Address of your Physical Therapist</string>
+    <string name="lblEnterName">Enter name of your physical therapist</string>
+    <string name="lblEmail">Enter email address of your physical therapist</string>
+    <string name="lblSave">Save</string>
 
 </resources>

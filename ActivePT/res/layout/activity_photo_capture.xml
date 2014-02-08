@@ -39,7 +39,7 @@
         android:text="@string/lblTakePicture" />
 
     <EditText
-        android:id="@+id/edtEnterDescription"
+        android:id="@+id/edtEnterEmailAddress"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_alignBottom="@+id/btnTakePicture"
@@ -49,11 +49,11 @@
         android:inputType="text" />
 
     <TextView
-        android:id="@+id/txtDescription"
+        android:id="@+id/txtEnterEmail"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_above="@+id/edtEnterDescription"
-        android:layout_alignLeft="@+id/edtEnterDescription"
+        android:layout_above="@+id/edtEnterEmailAddress"
+        android:layout_alignLeft="@+id/edtEnterEmailAddress"
         android:layout_marginBottom="16dp"
         android:text="@string/lblDescription" />
 

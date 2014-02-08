@@ -17,7 +17,7 @@ public class PhotoCaptureActivity extends Activity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_photo_capture);
         
-        EnterDescription = (EditText) findViewById(R.id.edtEnterDescription);
+        EnterDescription = (EditText) findViewById(R.id.edtEnterEmailAddress);
     }
 
 
