@@ -9,6 +9,8 @@ import android.widget.EditText;
 
 public class PhotoCaptureActivity extends Activity {
 	
+	private EditText edtEnterDescription;
+	
 	// declare a variable that will hold a reference to a the EditText component on the screen.
 	EditText EnterDescription;
 	private String strEnterDescription;
@@ -18,7 +20,9 @@ public class PhotoCaptureActivity extends Activity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_photo_capture);
         
-        EnterDescription = (EditText) findViewById(R.id.edtEnterEmailAddress);
+        //get access to the enter exercise description
+      	edtEnterDescription = (EditText) findViewById(R.id.edtEnterDescription);
+        
     }
 
 
@@ -33,6 +37,12 @@ public class PhotoCaptureActivity extends Activity {
     	setStrEnterDescription(EnterDescription.getText().toString());
     	// create an explicit intent. Telling it to move from one screen to the next.
     	Intent takePictureIntent = new Intent(this, GalleryActivity.class);
+    	
+    	//get data user entered into exercise description field.
+    	String exerciseDescription = edtEnterDescription.getText().toString();
+    	
+    	//pass that data to the next activity.
+    	takePictureIntent.putExtra("EXERCISE_DESCRIPTION", exerciseDescription);
     	
     	//start the activity
     	startActivity(takePictureIntent);
