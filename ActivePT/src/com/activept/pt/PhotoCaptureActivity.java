@@ -7,7 +7,9 @@ import java.io.FileOutputStream;
 import java.io.IOException;
 
 import android.app.Activity;
+import android.content.ContentValues;
 import android.content.Intent;
+import android.database.Cursor;
 import android.graphics.Bitmap;
 import android.media.MediaScannerConnection;
 import android.media.MediaScannerConnection.MediaScannerConnectionClient;
@@ -90,17 +92,13 @@ public class PhotoCaptureActivity extends Activity {
 
 			File dir = new File(Environment.getExternalStorageDirectory(), "Active PT");
 
-			Log.e("APT", "1");
 			if(!dir.exists())
 			{
-				Log.e("APT", "1.1");
 				if(dir.mkdirs())
 				{
 					Log.e("APT", "1.1.1");
 				}
-				Log.e("APT", "1.2");
 			}
-			Log.e("APT", "2");
 			
 			Log.e("APT", "FOLDER EXISTS: " + dir.exists() + " -- " + dir.getAbsolutePath());
 			
@@ -131,11 +129,25 @@ public class PhotoCaptureActivity extends Activity {
 						me.conn.scanFile(f.getAbsolutePath(), "image/jpeg");
 					}
 
-					public void onScanCompleted(String arg0, Uri arg1) 
+					public void onScanCompleted(String arg0, Uri uri) 
 					{
-						Log.e("APT", "G2G: " + arg0 + " -- " + arg1);
+						Log.e("APT", "G2G: " + arg0 + " -- " + uri);
 
 						me.conn.disconnect();
+						
+
+						String where = MediaStore.Images.ImageColumns.DATA + " = ?";
+						String[] args = { uri.toString() };
+						
+						ContentValues values = new ContentValues();
+						values.put(MediaStore.Images.ImageColumns.DESCRIPTION, edtEnterDescription.getText().toString());
+						
+						me.getContentResolver().update(uri, values, null, null);
+
+						Intent galleryIntent = new Intent(me, GalleryActivity.class);
+						me.startActivity(galleryIntent);
+						
+						// me.finish();
 					}
 				});
 				
