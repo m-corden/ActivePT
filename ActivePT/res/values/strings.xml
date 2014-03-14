@@ -14,5 +14,8 @@
     <string name="lblEnterName">Enter name of your physical therapist</string>
     <string name="lblEmail">Enter email address of your physical therapist</string>
     <string name="lblSave">Save</string>
+    <string name="lblCheckDaily">Daily Exercise</string>
+    <string name="lblCheckWeekly">Weekly Exercise</string>
+    <string name="lblSelectFreq">Select how often you should complete this exercise:</string>
 
 </resources>

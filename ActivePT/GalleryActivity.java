@@ -21,8 +21,8 @@ public class GalleryActivity extends Activity {
 		
 		//associate layout with this activity
 		setContentView(R.layout.activity_gallery);
-
-		//create a collection to hold the plants
+	}
+		//create a collection to hold the exercises
 		ArrayList<Exercise> allExercises = new ArrayList<Exercise>();
 		
 		exerciseDescription = null;

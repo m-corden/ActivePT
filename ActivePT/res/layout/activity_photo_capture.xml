@@ -28,33 +28,35 @@
         android:layout_marginTop="16dp"
         android:text="@string/lblLetsStart" />
 
-    <Button
-        android:id="@+id/btnTakePicture"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_alignLeft="@+id/txtStart"
-        android:layout_below="@+id/txtStart"
-        android:layout_marginTop="136dp"
-        android:onClick="takePicture"
-        android:text="@string/lblTakePicture" />
-
-    <EditText
-        android:id="@+id/edtEnterEmailAddress"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_alignBottom="@+id/btnTakePicture"
-        android:layout_centerHorizontal="true"
-        android:layout_marginBottom="62dp"
-        android:ems="10"
-        android:inputType="text" />
-
     <TextView
         android:id="@+id/txtEnterEmail"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_above="@+id/edtEnterEmailAddress"
-        android:layout_alignLeft="@+id/edtEnterEmailAddress"
-        android:layout_marginBottom="16dp"
+        android:layout_alignLeft="@+id/txtStart"
+        android:layout_below="@+id/txtStart"
+        android:layout_marginTop="21dp"
         android:text="@string/lblDescription" />
+
+    <EditText
+        android:id="@+id/edtEnterDescription"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignRight="@+id/welcome"
+        android:layout_below="@+id/txtEnterEmail"
+        android:inputType="text"
+        android:ems="10" >
+
+        <requestFocus />
+    </EditText>
+
+    <Button
+        android:id="@+id/btnTakePicture"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_centerHorizontal="true"
+        android:layout_centerVertical="true"
+        android:layout_marginTop="27dp"
+        android:onClick="takePicture"
+        android:text="@string/lblTakePicture" />
 
 </RelativeLayout>

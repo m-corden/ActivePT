@@ -1,8 +1,21 @@
 package com.activept.pt;
 
+import java.io.ByteArrayOutputStream;
+import java.io.File;
+import java.io.FileNotFoundException;
+import java.io.FileOutputStream;
+import java.io.IOException;
+
 import android.app.Activity;
 import android.content.Intent;
+import android.graphics.Bitmap;
+import android.media.MediaScannerConnection;
+import android.media.MediaScannerConnection.MediaScannerConnectionClient;
+import android.net.Uri;
 import android.os.Bundle;
+import android.os.Environment;
+import android.provider.MediaStore;
+import android.util.Log;
 import android.view.Menu;
 import android.view.View;
 import android.widget.EditText;
@@ -14,8 +27,9 @@ public class PhotoCaptureActivity extends Activity {
 	private EditText edtEnterDescription;
 	
 	// declare a variable that will hold a reference to a the EditText component on the screen.
-	EditText EnterDescription;
 	private String strEnterDescription;
+
+	private MediaScannerConnection conn = null;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -23,9 +37,9 @@ public class PhotoCaptureActivity extends Activity {
         setContentView(R.layout.activity_photo_capture);
         
         //get access to the enter exercise description
-      	EditText edtEnterDescription = (EditText) findViewById(R.id.edtEnterDescription);
+        edtEnterDescription = (EditText) findViewById(R.id.edtEnterDescription);
     }
-
+    
     @Override
     public boolean onCreateOptionsMenu(Menu menu) {
         // Inflate the menu; this adds items to the action bar if it is present.
@@ -36,11 +50,12 @@ public class PhotoCaptureActivity extends Activity {
     public void takePicture(View v) {
     	// use an implicit intent to invoke a camera.
     	Intent cameraIntent = new Intent(android.provider.MediaStore.ACTION_IMAGE_CAPTURE);
+    	cameraIntent.putExtra(MediaStore.EXTRA_MEDIA_ALBUM, "Active PT");
     	
     	// start this intent and anticipate a result.
     	startActivityForResult(cameraIntent, CAMERA_RESULT);
     	
-    	setStrEnterDescription(EnterDescription.getText().toString());
+/*    	setStrEnterDescription(edtEnterDescription.getText().toString());
     	// create an explicit intent. Telling it to move from one screen to the next.
     	Intent takePictureIntent = new Intent(this, GalleryActivity.class);
     	
@@ -52,7 +67,7 @@ public class PhotoCaptureActivity extends Activity {
     	
     	//start the activity
     	startActivity(takePictureIntent);
-    }
+*/    }
 
 	public String getStrEnterDescription() {
 		return strEnterDescription;
@@ -61,6 +76,78 @@ public class PhotoCaptureActivity extends Activity {
 
 	public void setStrEnterDescription(String strEnterDescription) {
 		this.strEnterDescription = strEnterDescription;
+	}
+	
+	protected void onActivityResult(int requestCode, int resultCode, Intent data) 
+	{
+		Log.e("APT", "GOT IMAGE");
+		
+		if (requestCode == CAMERA_RESULT && resultCode == RESULT_OK) {
+
+			ByteArrayOutputStream bytes = new ByteArrayOutputStream();
+			Bitmap photo = (Bitmap) data.getExtras().get("data");
+			photo.compress(Bitmap.CompressFormat.JPEG, 40, bytes);
+
+			File dir = new File(Environment.getExternalStorageDirectory(), "Active PT");
+
+			Log.e("APT", "1");
+			if(!dir.exists())
+			{
+				Log.e("APT", "1.1");
+				if(dir.mkdirs())
+				{
+					Log.e("APT", "1.1.1");
+				}
+				Log.e("APT", "1.2");
+			}
+			Log.e("APT", "2");
+			
+			Log.e("APT", "FOLDER EXISTS: " + dir.exists() + " -- " + dir.getAbsolutePath());
+			
+			try 
+			{
+				long now = System.currentTimeMillis();
+				
+				//you can create a new file name "test.jpg" in sdcard folder.
+				final File f = new File(dir, now +".jpg");
+				f.createNewFile();
+				//write the bytes in file
+
+				FileOutputStream fo = new FileOutputStream(f);
+				fo.write(bytes.toByteArray());
+
+				// remember close the FileOutput
+				fo.close();
+				//Save image into your new created album gallery
+				
+				final PhotoCaptureActivity me = this;
+				
+				MediaStore.Images.Media.insertImage(getContentResolver(), f.getAbsolutePath(), "Tests", "Description");
+
+				me.conn  = new MediaScannerConnection(this, new MediaScannerConnectionClient()
+				{
+					public void onMediaScannerConnected() 
+					{
+						me.conn.scanFile(f.getAbsolutePath(), "image/jpeg");
+					}
+
+					public void onScanCompleted(String arg0, Uri arg1) 
+					{
+						Log.e("APT", "G2G: " + arg0 + " -- " + arg1);
+
+						me.conn.disconnect();
+					}
+				});
+				
+				conn.connect();
+			} catch (FileNotFoundException e) {
+				// TODO Auto-generated catch block
+				e.printStackTrace();
+			} catch (IOException e) {
+				// TODO Auto-generated catch block
+				e.printStackTrace();
+			}
+		}
 	}
 
 }
