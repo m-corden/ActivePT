@@ -4,7 +4,6 @@
 	<classpathentry exported="true" kind="con" path="com.android.ide.eclipse.adt.DEPENDENCIES"/>
 	<classpathentry kind="lib" path="/Users/Marya/Desktop/MEC/Admin/ME/NU PM and Dev. Courses/Dev Course Notes:Assisignments/#4 Dev - Android Coding/CODE/Android Environment/sdk/extras/android/support/v4/android-support-v4.jar"/>
 	<classpathentry kind="src" path="src"/>
-	<classpathentry kind="src" path="gen"/>
 	<classpathentry exported="true" kind="con" path="com.android.ide.eclipse.adt.LIBRARIES"/>
 	<classpathentry kind="output" path="bin/classes"/>
 </classpath>
